@@ -18,11 +18,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Install GNU sed, split
+      - name: Install GNU coreutils
         shell: bash
         run: |
-          brew install gnu-sed coreutils
-          echo "/usr/local/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
+          brew install coreutils
           echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
 
       - name: Setup Python
