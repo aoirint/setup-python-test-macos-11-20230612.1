@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        include:
+          - os: "macos-11"
+            architecture: "x64"
+            python_version: "3.11.3"
+          - os: "macos-11"
+            architecture: "x64"
+            python_version: "3.11.4"
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@bd6b4b6205c4dbad673328db7b31b7fab9e241c0 # v4.6.1
+        with:
+          python-version: ${{ matrix.python_version }}
+          architecture: ${{ matrix.architecture }}
